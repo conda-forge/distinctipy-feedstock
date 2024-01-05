@@ -1,5 +1,5 @@
 {% set name = "distinctipy" %}
-{% set version = "1.2.3" %}
+{% set version = "1.3.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/distinctipy-{{ version }}.tar.gz
-  sha256: 9dd121cfa29f3d1dc491316edfed093e5eea10504aa52174d439e053a11a58fb
+  sha256: 726d0a018134211575783c7392083e6e20c3388b1ce04e8c3495e346f986112f
 
 build:
   noarch: python
@@ -16,10 +16,10 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.7
     - pip
   run:
-    - python >=3.6
+    - python >=3.7
     - numpy >=1.16.3
 
 test:
