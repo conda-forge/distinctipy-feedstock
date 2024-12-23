@@ -6,20 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/distinctipy-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/distinctipy-{{ version }}.tar.gz
   sha256: fed97afff1afb73ecaa87c85461021f0ba89fae63067c0125b9673526510aac4
 
 build:
   noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
-  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
+    - setuptools
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - numpy >=1.16.3
 
 test:
@@ -29,6 +30,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/alan-turing-institute/distinctipy
